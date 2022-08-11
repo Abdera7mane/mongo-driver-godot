@@ -55,6 +55,7 @@ echo Installing mongo-c-driver
 
 pushd thirdparty/mongo-c-driver
 echo $(python build/calc_release_version.py) > VERSION_CURRENT
+cat VERSION_CURRENT
 
 mkdir cmake-build
 cd cmake-build
