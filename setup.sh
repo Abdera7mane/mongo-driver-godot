@@ -54,7 +54,7 @@ export BUILD_TYPE
 echo Installing mongo-c-driver
 
 pushd thirdparty/mongo-c-driver
-echo $(python build/calc_release_version.py) > VERSION_CURRENT
+python build/calc_release_version.py > VERSION_CURRENT
 cat VERSION_CURRENT
 
 mkdir cmake-build
@@ -84,5 +84,5 @@ sudo cmake --build . --config $CONFIG_TYPE --target install
 popd
 
 echo Copying dependencies to project
-cp $bin_mongo_cxx_driver_dir/lib/* $bin_dir
-cp $bin_mongo_c_driver_dir/lib/* $bin_dir
+cp $bin_mongo_cxx_driver_dir/lib/* $bin_dir || true
+cp $bin_mongo_c_driver_dir/lib/* $bin_dir   || true
