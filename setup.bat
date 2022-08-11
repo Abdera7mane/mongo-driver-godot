@@ -49,7 +49,7 @@ REM http://mongoc.org/libmongoc/current/installing.html#preparing-a-build-from-a
 echo Installing mongo-c-driver
 pushd %CD%
 cd thirdparty/mongo-c-driver
-@REM python build/calc_release_version.py > VERSION_CURRENT
+@REM python -u build/calc_release_version.py > VERSION_CURRENT
 mkdir cmake-build
 cd cmake-build
 set mongoc_target="Release"

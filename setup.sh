@@ -54,7 +54,7 @@ export BUILD_TYPE
 echo Installing mongo-c-driver
 
 pushd thirdparty/mongo-c-driver
-python build/calc_release_version.py > VERSION_CURRENT
+python -u build/calc_release_version.py > VERSION_CURRENT
 mkdir cmake-build
 cd cmake-build
 cmake ..                                           \
