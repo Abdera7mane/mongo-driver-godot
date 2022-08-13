@@ -117,7 +117,6 @@ elif env['platform'] in ('x11', 'linux'):
         env.Append(CCFLAGS=['-fPIC', '-g', '-O3', '-std=c++17'])
 
 elif env['platform'] == 'windows':
-    env['target_path'] += 'win64/'
     CPP_LIBRARY += '.windows'
     
     if env["use_mingw"]:
@@ -149,6 +148,8 @@ elif env['platform'] == 'windows':
             env.Append(CCFLAGS=['-EHsc', '-D_DEBUG', '-MDd'])
         else:
             env.Append(CCFLAGS=['-O2', '-EHsc', '-DNDEBUG', '-MD'])
+    
+    env['target_path'] += 'win64/'
 
 if env['target'] in ('debug', 'd'):
     CPP_LIBRARY += '.debug'
