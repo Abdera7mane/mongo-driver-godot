@@ -17,8 +17,9 @@ jobs:
           python --version
           scons --version
       - name: Setup build environment
+        shell: cmd
         run: |
-          del .vscode
+          del /q .vscode
           ./setup.bat "Visual Studio 17 2022" release
       - name: Build project
         run: scons platform=windows target=release
@@ -43,8 +44,9 @@ jobs:
           python --version
           scons --version
       - name: Setup build environment
+        shell: cmd
         run: |
-          del .vscode
+          del /q .vscode
           ./setup.bat "Visual Studio 17 2022" debug
       - name: Build project
         run: scons platform=windows target=debug
