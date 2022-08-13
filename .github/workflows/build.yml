@@ -16,8 +16,8 @@ jobs:
           python -m pip install scons
           python --version
           scons --version
+      - uses: ilammy/msvc-dev-cmd@v1
       - name: Setup build environment
-        uses: ilammy/msvc-dev-cmd@v1
         run: ./setup.bat "Visual Studio 17 2022" release
       - name: Build project
         run: scons platform=windows target=release
@@ -41,8 +41,8 @@ jobs:
           python -m pip install scons
           python --version
           scons --version
+      - uses: ilammy/msvc-dev-cmd@v1
       - name: Setup build environment
-        uses: ilammy/msvc-dev-cmd@v1
         run: ./setup.bat "Visual Studio 17 2022" debug
       - name: Build project
         run: scons platform=windows target=debug
