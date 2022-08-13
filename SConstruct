@@ -140,6 +140,7 @@ elif env['platform'] == 'windows':
         # This makes sure to keep the session environment variables on windows,
         # that way you can run scons in a vs 2017 prompt and it will find all the required tools
         env.Append(ENV=os.environ)
+        opts.Update(env)
 
         env.Append(CCFLAGS=['-DWIN32', '-D_WIN32', '-D_WINDOWS',
                 '-W3', '-GR', '-D_CRT_SECURE_NO_WARNINGS', '/std:c++17'])
