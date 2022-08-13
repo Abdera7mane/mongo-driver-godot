@@ -18,7 +18,7 @@ jobs:
           scons --version
       - name: Setup build environment
         run: |
-          del /q .vscode
+          del .vscode
           ./setup.bat "Visual Studio 17 2022" release
       - name: Build project
         run: scons platform=windows target=release
@@ -44,7 +44,7 @@ jobs:
           scons --version
       - name: Setup build environment
         run: |
-          del /q .vscode
+          del .vscode
           ./setup.bat "Visual Studio 17 2022" debug
       - name: Build project
         run: scons platform=windows target=debug
