@@ -19,6 +19,7 @@ jobs:
       - name: Setup build environment
         run: ./setup.bat "Visual Studio 17 2022" release
       - name: Build project
+        shell: cmd
         run: scons platform=windows target=release
       - name: Upload artificat
         uses: actions/upload-artifact@v2
@@ -43,6 +44,7 @@ jobs:
       - name: Setup build environment
         run: ./setup.bat "Visual Studio 17 2022" debug
       - name: Build project
+        shell: cmd
         run: scons platform=windows target=debug
       - name: Upload artificat
         uses: actions/upload-artifact@v2
