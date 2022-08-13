@@ -123,7 +123,6 @@ elif env['platform'] == 'windows':
     if env["use_mingw"]:
         # Don't Clone the environment. Because otherwise, SCons will pick up msvc stuff.
         env = Environment(ENV=os.environ, tools=['mingw'])
-        opts.Update(env)
         
         env.Append(CCFLAGS=['-O3', '-Wwrite-strings'])
         env.Append(CXXFLAGS=['-std=c++17'])
