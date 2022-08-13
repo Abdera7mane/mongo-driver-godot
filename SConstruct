@@ -125,7 +125,14 @@ elif env['platform'] == 'windows':
         env = Environment(ENV=os.environ, tools=['mingw'])
         opts.Update(env)
         
-        env.Append(CCFLAGS=['-std=c++17'])
+        env.Append(CCFLAGS=['-O3', '-Wwrite-strings'])
+        env.Append(CXXFLAGS=['-std=c++17'])
+        env.Append(LINKFLAGS=[
+            '--static',
+            '-Wl,--no-undefined',
+            '-static-libgcc',
+            '-static-libstdc++',
+        ])
 
         env['SPAWN'] = my_spawn
         env.Replace(ARFLAGS=["q"])
@@ -149,10 +156,6 @@ else:
     CPP_LIBRARY += '.release'
 
 CPP_LIBRARY += '.' + str(bits)
-
-if env['platform'] == 'windows':
-    CPP_LIBRARY += '.lib'
-    CPP_LIBRARY = 'lib' + CPP_LIBRARY
 
 if env['use_llvm']:
     env['CC'] = 'clang'
