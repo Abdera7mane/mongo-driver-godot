@@ -16,6 +16,20 @@ jobs:
           python -m pip install scons
           python --version
           scons --version
+      - name: Set environment variables
+        run: |
+          $MONGOC_HASH=(git -C thirdparty/mongo-c-driver rev-parse --short HEAD)
+          $MONGOCXX_HASH=(git -C thirdparty/mongo-cxx-driver rev-parse --short HEAD)
+          echo "MONGOC_HASH=$MONGOC_HASH" >> $env:GITHUB_ENV
+          echo "MONGOCXX_HASH=$MONGOCXX_HASH" >> $env:GITHUB_ENV
+      - name: Setup CMake cache
+        id: cache-primes
+        uses: actions/cache@v3
+        with:
+          path: |
+            thirdparty/mongo-c-driver/cmake-build
+            thirdparty/mongo-cxx-driver/build
+          key: ${{ runner.os }}-${{ env.MONGOC_HASH }}-${{ env.MONGOCXX_HASH }}
       - uses: ilammy/msvc-dev-cmd@v1
       - name: Setup build environment
         run: ./setup.bat "Visual Studio 17 2022" release
@@ -41,6 +55,20 @@ jobs:
           python -m pip install scons
           python --version
           scons --version
+      - name: Set environment variables
+        run: |
+          $MONGOC_HASH=(git -C thirdparty/mongo-c-driver rev-parse --short HEAD)
+          $MONGOCXX_HASH=(git -C thirdparty/mongo-cxx-driver rev-parse --short HEAD)
+          echo "MONGOC_HASH=$MONGOC_HASH" >> $env:GITHUB_ENV
+          echo "MONGOCXX_HASH=$MONGOCXX_HASH" >> $env:GITHUB_ENV
+      - name: Setup CMake cache
+        id: cache-primes
+        uses: actions/cache@v3
+        with:
+          path: |
+            thirdparty/mongo-c-driver/cmake-build
+            thirdparty/mongo-cxx-driver/build
+          key: ${{ runner.os }}-${{ env.MONGOC_HASH }}-${{ env.MONGOCXX_HASH }}
       - uses: ilammy/msvc-dev-cmd@v1
       - name: Setup build environment
         run: ./setup.bat "Visual Studio 17 2022" debug
@@ -66,6 +94,18 @@ jobs:
           python -m pip install scons
           python --version
           scons --version
+      - name: Set environment variables
+        run: |
+          echo "MONGOC_HASH=$(git -C thirdparty/mongo-c-driver rev-parse --short HEAD)" >> $GITHUB_ENV
+          echo "MONGOCXX_HASH=$(git -C thirdparty/mongo-cxx-driver rev-parse --short HEAD)" >> $GITHUB_ENV
+      - name: Setup CMake cache
+        id: cache-primes
+        uses: actions/cache@v3
+        with:
+          path: |
+            thirdparty/mongo-c-driver/cmake-build
+            thirdparty/mongo-cxx-driver/build
+          key: ${{ runner.os }}-${{ env.MONGOC_HASH }}-${{ env.MONGOCXX_HASH }}
       - name: Setup build environment
         run: ./setup.sh linux debug
       - name: Build project
@@ -90,6 +130,18 @@ jobs:
           python -m pip install scons
           python --version
           scons --version
+      - name: Set environment variables
+        run: |
+          echo "MONGOC_HASH=$(git -C thirdparty/mongo-c-driver rev-parse --short HEAD)" >> $GITHUB_ENV
+          echo "MONGOCXX_HASH=$(git -C thirdparty/mongo-cxx-driver rev-parse --short HEAD)" >> $GITHUB_ENV
+      - name: Setup CMake cache
+        id: cache-primes
+        uses: actions/cache@v3
+        with:
+          path: |
+            thirdparty/mongo-c-driver/cmake-build
+            thirdparty/mongo-cxx-driver/build
+          key: ${{ runner.os }}-${{ env.MONGOC_HASH }}-${{ env.MONGOCXX_HASH }}
       - name: Setup build environment
         run: ./setup.sh linux release
       - name: Build project
@@ -114,6 +166,18 @@ jobs:
           brew install scons
           python --version
           scons --version
+      - name: Set environment variables
+        run: |
+          echo "MONGOC_HASH=$(git -C thirdparty/mongo-c-driver rev-parse --short HEAD)" >> $GITHUB_ENV
+          echo "MONGOCXX_HASH=$(git -C thirdparty/mongo-cxx-driver rev-parse --short HEAD)" >> $GITHUB_ENV
+      - name: Setup CMake cache
+        id: cache-primes
+        uses: actions/cache@v3
+        with:
+          path: |
+            thirdparty/mongo-c-driver/cmake-build
+            thirdparty/mongo-cxx-driver/build
+          key: ${{ runner.os }}-${{ env.MONGOC_HASH }}-${{ env.MONGOCXX_HASH }}
       - name: Setup build environment
         run: ./setup.sh osx debug
       - name: Build project
@@ -138,6 +202,18 @@ jobs:
           brew install scons
           python --version
           scons --version
+      - name: Set environment variables
+        run: |
+          echo "MONGOC_HASH=$(git -C thirdparty/mongo-c-driver rev-parse --short HEAD)" >> $GITHUB_ENV
+          echo "MONGOCXX_HASH=$(git -C thirdparty/mongo-cxx-driver rev-parse --short HEAD)" >> $GITHUB_ENV
+      - name: Setup CMake cache
+        id: cache-primes
+        uses: actions/cache@v3
+        with:
+          path: |
+            thirdparty/mongo-c-driver/cmake-build
+            thirdparty/mongo-cxx-driver/build
+          key: ${{ runner.os }}-${{ env.MONGOC_HASH }}-${{ env.MONGOCXX_HASH }}
       - name: Setup build environment
         run: ./setup.sh osx release
       - name: Build project
