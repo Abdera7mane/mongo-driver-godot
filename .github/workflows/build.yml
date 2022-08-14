@@ -29,7 +29,7 @@ jobs:
           path: |
             thirdparty/mongo-c-driver/cmake-build
             thirdparty/mongo-cxx-driver/build
-          key: ${{ runner.os }}-${{ env.MONGOC_HASH }}-${{ env.MONGOCXX_HASH }}
+          key: ${{ runner.os }}-release-${{ env.MONGOC_HASH }}-${{ env.MONGOCXX_HASH }}
       - uses: ilammy/msvc-dev-cmd@v1
       - name: Setup build environment
         run: ./setup.bat "Visual Studio 17 2022" release
@@ -68,7 +68,7 @@ jobs:
           path: |
             thirdparty/mongo-c-driver/cmake-build
             thirdparty/mongo-cxx-driver/build
-          key: ${{ runner.os }}-${{ env.MONGOC_HASH }}-${{ env.MONGOCXX_HASH }}
+          key: ${{ runner.os }}-debug-${{ env.MONGOC_HASH }}-${{ env.MONGOCXX_HASH }}
       - uses: ilammy/msvc-dev-cmd@v1
       - name: Setup build environment
         run: ./setup.bat "Visual Studio 17 2022" debug
@@ -105,7 +105,7 @@ jobs:
           path: |
             thirdparty/mongo-c-driver/cmake-build
             thirdparty/mongo-cxx-driver/build
-          key: ${{ runner.os }}-${{ env.MONGOC_HASH }}-${{ env.MONGOCXX_HASH }}
+          key: ${{ runner.os }}-debug-${{ env.MONGOC_HASH }}-${{ env.MONGOCXX_HASH }}
       - name: Setup build environment
         run: ./setup.sh linux debug
       - name: Build project
@@ -141,7 +141,7 @@ jobs:
           path: |
             thirdparty/mongo-c-driver/cmake-build
             thirdparty/mongo-cxx-driver/build
-          key: ${{ runner.os }}-${{ env.MONGOC_HASH }}-${{ env.MONGOCXX_HASH }}
+          key: ${{ runner.os }}-release-${{ env.MONGOC_HASH }}-${{ env.MONGOCXX_HASH }}
       - name: Setup build environment
         run: ./setup.sh linux release
       - name: Build project
@@ -177,7 +177,7 @@ jobs:
           path: |
             thirdparty/mongo-c-driver/cmake-build
             thirdparty/mongo-cxx-driver/build
-          key: ${{ runner.os }}-${{ env.MONGOC_HASH }}-${{ env.MONGOCXX_HASH }}
+          key: ${{ runner.os }}-debug-${{ env.MONGOC_HASH }}-${{ env.MONGOCXX_HASH }}
       - name: Setup build environment
         run: ./setup.sh osx debug
       - name: Build project
@@ -213,7 +213,7 @@ jobs:
           path: |
             thirdparty/mongo-c-driver/cmake-build
             thirdparty/mongo-cxx-driver/build
-          key: ${{ runner.os }}-${{ env.MONGOC_HASH }}-${{ env.MONGOCXX_HASH }}
+          key: ${{ runner.os }}-release-${{ env.MONGOC_HASH }}-${{ env.MONGOCXX_HASH }}
       - name: Setup build environment
         run: ./setup.sh osx release
       - name: Build project
